@@ -1,21 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-
-function UserCard(props) {
-
-  return <div>
-    <img src={props.user.picture.large} alt={`${props.user.name.first} ${props.user.name.last}`} />
-    <div>{props.user.name.first} {props.user.name.last}</div>
-    <div>
-    {
-      //TODO needs to include more info card
-      //TODO needs to toggle button text and hide info care
-      //TODO needs to be specific to user and not global change
-      props.hide === false ? <div></div> : null
-    }</div>
-    <button onClick={props.showDetail}>Show Details</button>
-    </div>
-}
+import UserCard from './UserCard'
 
 class App extends Component {
   constructor(props) {
@@ -47,7 +32,6 @@ class App extends Component {
   render() { 
     return (
       <div className="App">
-        <header className="App-header">
           {
             this.state.results.map((user, index) => <UserCard 
               key={index} 
@@ -57,7 +41,6 @@ class App extends Component {
               />           
             )
           }
-        </header>
       </div>
     );
   }
