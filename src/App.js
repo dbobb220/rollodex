@@ -7,7 +7,7 @@ class App extends Component {
     super(props);
     this.state = {
       results: [],
-      isHidden: false
+      isHidden: true
     };
   }
 
@@ -18,6 +18,7 @@ class App extends Component {
         this.setState({
           results: data.results
         })
+        console.log(data)
       })
       .catch(err => console.log("Error: " + err))
   }
@@ -29,6 +30,12 @@ class App extends Component {
     })
   }
 
+  hideDetail = () => {
+    this.setState({
+      isHidden: true
+    })
+  }
+
   render() { 
     return (
       <div className="App">
@@ -37,6 +44,7 @@ class App extends Component {
               key={index} 
               user={user} 
               showDetail={this.showDetail}
+              hideDetail={this.hideDetail}
               hide={this.state.isHidden}
               />           
             )

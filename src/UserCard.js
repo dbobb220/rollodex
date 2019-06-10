@@ -5,8 +5,17 @@ function UserCard(props) {
     <div className = "person">
         <img src={props.user.picture.large} alt={`${props.user.name.first} ${props.user.name.last}`} />
         <div>{props.user.name.first} {props.user.name.last}</div>
-        <button>More Info</button>
-        <h3>{props.email}</h3>
+        {
+            props.hide === true ? 
+                <div>
+                    <button onClick={props.showDetail}>More Info</button>
+                </div> : 
+                <div>
+                    <button onClick={props.hideDetail}>Less Info</button>
+                    <p>{props.user.email}</p>
+                    <p>{props.user.cell}</p>
+                </div>
+        }
     </div>
     )
   }
